@@ -10,7 +10,7 @@
 - **Authentication:** none for this endpoint (public). Paid or private APIs usually need an API key sent in a header, e.g. `Authorization: Bearer <token>`.
 - **Documentation:** https://docs.coingecko.com (see the "Coins List with Market Data" endpoint)
 
-## 2. Test in Postman (or Bruno)
+## 2. Test in Browser (or Postman/Bruno)
 1. New request, method **GET**, paste the URL above.
 2. Open the **Params** tab and add the query parameters from section 1 (the URL updates automatically).
 3. Click **Send**. Check that status is **200 OK**.
@@ -30,12 +30,12 @@ python fetch_api_to_csv.py
 ```
 Outputs: `raw_response.json` (raw API response) and `crypto_markets.csv` (flat table, one row per coin, plus a `fetched_at_utc` timestamp).
 
-## 5. Findings (fill in after running)
-- Rows / columns in the CSV: ___
-- Coin with highest market cap: ___
-- Biggest 24h gainer and loser (`price_change_percentage_24h`): ___
-- Missing values found and how handled: ___
-- One observation useful for analysis: ___
+## 5. Findings (from my run on 21 Oct 2026)
+- Rows / columns in the CSV: 20 rows x 12 columns
+- Coin with highest market cap: Bitcoin (rank 1)
+- Biggest 24h gainer: Zcash (+10.90%); biggest loser: Monero (-3.64%)
+- Missing values: none in the selected columns, so nothing needed handling
+- Observation: market caps span several orders of magnitude (Bitcoin is about 1.6e14 vs smaller coins near 6e11), so analysis should use ranks or log scales
 
 ## 6. Challenges and notes
 - Free tier is rate-limited; HTTP 429 means wait and retry.
